@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="FluentValidation" Version="10.3.0" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="10.3.0" />
+    <PackageReference Include="MediatR" Version="9.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CAMMS.Core\CAMMS.Domain.csproj" />
+    <ProjectReference Include="..\CAMMS.Strategy.Application.DTO\CAMMS.Strategy.Application.DTO.csproj" />
+    <ProjectReference Include="..\CAMMS.Strategy.Application.Interface\CAMMS.Strategy.Application.Interface.csproj" />
+  </ItemGroup>
+
+</Project>

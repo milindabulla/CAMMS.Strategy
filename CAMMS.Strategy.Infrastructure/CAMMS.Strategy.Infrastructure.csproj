@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="9.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CAMMS.Strategy.Application.Interface\CAMMS.Strategy.Application.Interface.csproj" />
+    <ProjectReference Include="..\CAMMS.Strategy.Infrastructure.Behavior\CAMMS.Strategy.Infrastructure.Behavior.csproj" />
+    <ProjectReference Include="..\CAMMS.Strategy.Infrastructure.Identity\CAMMS.Strategy.Infrastructure.Identity.csproj" />
+    <ProjectReference Include="..\CAMMS.Strategy.Infrastructure.Notification\CAMMS.Strategy.Infrastructure.Notification.csproj" />
+    <ProjectReference Include="..\CAMMS.Strategy.Infrastructure.Persistence\CAMMS.Strategy.Infrastructure.Persistence.csproj" />
+  </ItemGroup>
+
+</Project>
