@@ -3,6 +3,7 @@ using CAMMS.Strategy.Application.Query;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
+using System;
 using System.Threading.Tasks;
 
 namespace CAMMS.Strategy.WebAPI.Controllers
@@ -19,14 +20,14 @@ namespace CAMMS.Strategy.WebAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll([FromQuery] GetAllActionsQuery query )
         {
             Log.Information("EndPoint - GET api/project");
-            return Ok(await _mediator.Send(new GetAllActionsQuery()));
+            return Ok(await _mediator.Send(query));
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int id)
+        public async Task<IActionResult> Get(Guid id)
         {
             Log.Information("EndPoint - GET api/project/id");
             return Ok(await _mediator.Send(new GetActionByIdQuery { Id = id }));

@@ -52,5 +52,10 @@ namespace CAMMS.Strategy.Infrastructure
         {
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(CachingBehavior<,>));
         }
+
+        public static void AddInfrastructureAuthorizationBehavior(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(AuthorizationBehavior<,>));
+        }
     }
 }

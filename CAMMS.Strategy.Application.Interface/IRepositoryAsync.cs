@@ -15,6 +15,7 @@ namespace CAMMS.Strategy.Application.Interface
         Task<T> GetByIdAsync(int id);
 
         Task<T> GetByGuidAsync(Guid id);
+
         Task<List<T>> GetAllAsync();
         IQueryable<T> GetAllQueryable();
         Task<List<T>> GetAllPagedAsync(int pageNumber, int pageSize);

@@ -53,12 +53,15 @@ namespace CAMMS.Strategy.WebAPI
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "CAMMS.Strategy.WebAPI", Version = "v1" });
             });
+            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
 
+            services.AddHttpContextAccessor();
             services.AddInfrastructure(Configuration);
             services.AddApplication(Configuration);
 
             services.AddInfrastructureLoggingBehaviour(Configuration);
             services.AddInfrastructureExceptionHandleBehaviour(Configuration);
+            services.AddInfrastructureAuthorizationBehavior(Configuration);
             services.AddApplicationValidationBehaviour(Configuration);
             services.AddInfrastructurePerformanceBehaviour(Configuration);
             services.AddInfrastructureCircuitBreakerBehaviour(Configuration);

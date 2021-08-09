@@ -25,7 +25,7 @@ namespace CAMMS.Strategy.Application.Query
         }
         public async Task<ActionDto> Handle(GetActionByIdQuery request, CancellationToken cancellationToken)
         {
-            var action = await unitOfWork.GetRepository<Domain.Action>().GetByIdAsync(request.Id);
+            var action = await unitOfWork.GetRepository<Domain.Action>().GetByGuidAsync(request.Id);
             ActionDto actionDto = mapper.Map<ActionDto>(action);
             return await Task.FromResult(actionDto);
         }

@@ -25,8 +25,20 @@ namespace CAMMS.Strategy.Application.Query
         }
         public async Task<List<ActionDto>> Handle(GetAllActionsQuery request, CancellationToken cancellationToken)
         {
-            var actionList = await unitOfWork.GetRepository<Domain.Action>().GetAllAsync();
-            List<ActionDto> actionDtoList = mapper.Map<List<ActionDto>>(actionList);
+            var actionList = new List<Domain.Action>();
+            List<ActionDto> actionDtoList;
+            if (!request.PageNumber.HasValue || request.PageNumber==0 
+                || !request.PageSize.HasValue || request.PageSize == 0)
+            {
+                actionList = await unitOfWork.GetRepository<Domain.Action>().GetAllAsync();
+                actionDtoList = mapper.Map<List<ActionDto>>(actionList);
+            }
+            else
+            {
+                actionList = await unitOfWork.GetRepository<Domain.Action>().GetAllPagedAsync(request.PageNumber.Value, request.PageSize.Value);
+                actionDtoList = mapper.Map<List<ActionDto>>(actionList);
+            }
+            
             return await Task.FromResult(actionDtoList);
         }
     }

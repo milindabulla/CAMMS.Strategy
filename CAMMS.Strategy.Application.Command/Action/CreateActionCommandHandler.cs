@@ -22,18 +22,19 @@ namespace CAMMS.Strategy.Application.Command
         }
         public async Task<int> Handle(CreateActionCommand request, CancellationToken cancellationToken)
         {
-            var actionDto = new ActionDto();
-            actionDto.Id = request.Id;
-            actionDto.Name = request.Name;
-            actionDto.Description = request.Description;
-            actionDto.StartDate = request.StartDate;
-            actionDto.EndDate = request.EndDate;
+            //var actionDto = new ActionDto();
+            //actionDto.Id = request.Id;
+            //actionDto.Name = request.Name;
+            //actionDto.Description = request.Description;
+            //actionDto.StartDate = request.StartDate;
+            //actionDto.EndDate = request.EndDate;
 
-            Domain.Action action = mapper.Map<Domain.Action>(actionDto);
-            await unitOfWork.GetRepository<Domain.Action>().InsertAsync(action);
-            await unitOfWork.SaveAsync();
+            //Domain.Action action = mapper.Map<Domain.Action>(actionDto);
+            //await unitOfWork.GetRepository<Domain.Action>().InsertAsync(action);
+            //await unitOfWork.SaveAsync();
 
-            return action.Id;
+            //return action.Id;
+            return 0;
         }
     }
 }
