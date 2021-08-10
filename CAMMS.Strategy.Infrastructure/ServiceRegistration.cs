@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Scrutor;
+using CAMMS.Strategy.Infrastructure.Identity;
 
 namespace CAMMS.Strategy.Infrastructure
 {
@@ -20,7 +21,7 @@ namespace CAMMS.Strategy.Infrastructure
         {
             services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnectionString")));
             services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
-
+            services.AddSingleton(typeof(JWTProvider));
         }
 
         public static void AddInfrastructureLoggingBehaviour(this IServiceCollection services, IConfiguration configuration)

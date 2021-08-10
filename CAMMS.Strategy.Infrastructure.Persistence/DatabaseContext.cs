@@ -27,5 +27,6 @@ namespace CAMMS.Strategy.Infrastructure.Persistence
         }
 
         public DbSet<Domain.Action> Action { get; set; }
+        public DbSet<Domain.User> User { get; set; }
     }
 }

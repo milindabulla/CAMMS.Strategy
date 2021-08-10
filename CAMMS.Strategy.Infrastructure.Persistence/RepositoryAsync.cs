@@ -91,6 +91,26 @@ namespace CAMMS.Strategy.Infrastructure.Persistence
             return await commend.ExecuteNonQueryAsync();
         }
 
+        public async Task<Guid> ExecuteScalarAsync(string procedureName, SqlParameter[] parameterList)
+        {
+            Guid userId = Guid.Empty;
+            DbCommand commend = Context.Database.GetDbConnection().CreateCommand();
+            commend.CommandText = procedureName;
+            commend.CommandType = CommandType.StoredProcedure;
+            commend.Parameters.AddRange(parameterList);
+
+            if (commend.Connection.State != ConnectionState.Open)
+            {
+                commend.Connection.Open();
+            }
+            var id = await commend.ExecuteScalarAsync();
+            if(id!= null)
+            {
+                Guid.TryParse(id.ToString(), out userId);
+            }
+            return userId;
+        }
+
         public async Task<List<T>> ExecuteReaderAsync<T>(string procedureName, SqlParameter[] parameterList)
         {
             using (DbCommand commend = Context.Database.GetDbConnection().CreateCommand())

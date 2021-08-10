@@ -21,6 +21,7 @@ namespace CAMMS.Strategy.Application.Interface
         Task<List<T>> GetAllPagedAsync(int pageNumber, int pageSize);
         Task<int> ExecuteNonQueryAsync(string sqlCommand, object[] parameterList);
         Task<int> ExecuteNonQueryAsync(string procedureName, SqlParameter[] parameterList);
+        Task<Guid> ExecuteScalarAsync(string procedureName, SqlParameter[] parameterList);
         Task<List<T>> ExecuteReaderAsync<T>(string sqlCommand, object[] parameterList) where T : class;
         Task<List<T>> ExecuteReaderAsync<T>(string procedureName, SqlParameter[] parameterList);
     }

@@ -17,6 +17,7 @@ namespace CAMMS.Strategy.Application
         public static void AddApplication(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddAutoMapper(typeof(ActionProfile));
+            services.AddAutoMapper(typeof(UserProfile));
         }
 
         public static void AddApplicationValidationBehaviour(this IServiceCollection services, IConfiguration configuration)
