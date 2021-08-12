@@ -6,10 +6,11 @@ using Serilog;
 using System;
 using System.Threading.Tasks;
 
-namespace CAMMS.Strategy.WebAPI.Controllers
+namespace CAMMS.Strategy.WebAPI.Controllers.v2
 {
-    [Route("api/[controller]")]
+    [ApiVersion("2.0")]
     [ApiController]
+    [Route("api/v{version:apiVersion}/[controller]")]
     public class ActionController : ControllerBase
     {
         private readonly IMediator _mediator;
