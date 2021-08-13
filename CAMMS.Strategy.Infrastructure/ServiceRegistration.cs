@@ -5,12 +5,6 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Scrutor;
 using CAMMS.Strategy.Infrastructure.Identity;
 
 namespace CAMMS.Strategy.Infrastructure
@@ -56,7 +50,7 @@ namespace CAMMS.Strategy.Infrastructure
 
         public static void AddInfrastructureAuthorizationBehavior(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(AuthorizationBehavior<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestAuthorizationBehavior<,>));
         }
     }
 }

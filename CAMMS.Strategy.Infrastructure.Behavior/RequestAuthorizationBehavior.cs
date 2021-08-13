@@ -14,13 +14,13 @@ using System.Threading.Tasks;
 
 namespace CAMMS.Strategy.Infrastructure.Behavior
 {
-    public class AuthorizationBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
+    public class RequestAuthorizationBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
     {
         private readonly IConfiguration configuration;
         private readonly IHttpContextAccessor httpContextAccessor;
         private readonly AppSettings settings;
 
-        public AuthorizationBehavior(IConfiguration configuration , IHttpContextAccessor httpContextAccessor
+        public RequestAuthorizationBehavior(IConfiguration configuration , IHttpContextAccessor httpContextAccessor
             , IOptions<AppSettings> settings)
         {
             this.configuration = configuration;
