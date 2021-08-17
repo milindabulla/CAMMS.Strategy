@@ -59,10 +59,9 @@ namespace CAMMS.Strategy.WebAPI
             services.AddHttpContextAccessor();
             services.AddInfrastructure(Configuration);
             services.AddApplication(Configuration);
-
-            services.AddInfrastructureLoggingBehaviour(Configuration);
-            services.AddInfrastructureExceptionHandleBehaviour(Configuration);
             services.AddInfrastructureAuthorizationBehavior(Configuration);
+            services.AddInfrastructureLoggingBehaviour(Configuration);
+            services.AddInfrastructureExceptionHandleBehaviour(Configuration);            
             services.AddApplicationValidationBehaviour(Configuration);
             services.AddInfrastructurePerformanceBehaviour(Configuration);
             services.AddInfrastructureCircuitBreakerBehaviour(Configuration);

@@ -21,7 +21,7 @@ namespace CAMMS.Strategy.WebAPI.Controllers.v1
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll([FromQuery] GetAllActionsQuery query )
+        public async Task<IActionResult> GetAll([FromQuery] GetAllActionsQuery query)
         {
             Log.Information("EndPoint - GET api/project");
             return Ok(await _mediator.Send(query));
