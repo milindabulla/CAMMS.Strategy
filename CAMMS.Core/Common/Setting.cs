@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CAMMS.Domain.Common
 {
-   public class Setting
+    public class Setting
     {
         public Guid SettingId { get; set; }
         public string Name { get; set; }
@@ -21,4 +21,3 @@ namespace CAMMS.Domain.Common
         public string DataType { get; set; }
     }
 }
- 

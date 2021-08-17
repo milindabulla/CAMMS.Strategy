@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CAMMS.Strategy.Application.Query.Setting
 {
-    public class GetSettingByAppCodeQuery: IRequest<List<SettingDto>>
+    public class GetSettingByAppCodeQuery : IRequest<List<SettingDto>>
     {
         public GetSettingByAppCodeQuery()
         {

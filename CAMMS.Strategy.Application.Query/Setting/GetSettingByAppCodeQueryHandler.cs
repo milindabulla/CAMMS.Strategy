@@ -34,5 +34,3 @@ namespace CAMMS.Strategy.Application.Query.Setting
         }
     }
 }
-
-
