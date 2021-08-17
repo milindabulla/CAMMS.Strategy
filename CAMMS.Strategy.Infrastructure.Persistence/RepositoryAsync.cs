@@ -127,6 +127,21 @@ namespace CAMMS.Strategy.Infrastructure.Persistence
             }
         }
 
+        public async Task<List<T>> ExecuteReaderAsync<T>(string procedureName)
+        {
+            using (DbCommand commend = Context.Database.GetDbConnection().CreateCommand())
+            {
+                commend.CommandText = procedureName;
+                commend.CommandType = CommandType.StoredProcedure;
+
+                Context.Database.OpenConnection();
+                using (var reader = await commend.ExecuteReaderAsync())
+                {
+                    return ConvertToObjectList<T>(reader);
+                }
+            }
+        }
+
         private List<T> ConvertToObjectList<T>(DbDataReader reader)
         {
             var result = new List<T>();

@@ -5,6 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Risk\**" />
+    <EmbeddedResource Remove="Risk\**" />
+    <None Remove="Risk\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.1.1" />
     <PackageReference Include="MediatR" Version="9.0.0" />
     <PackageReference Include="Serilog" Version="2.10.0" />
@@ -14,10 +20,6 @@
     <ProjectReference Include="..\CAMMS.Core\CAMMS.Domain.csproj" />
     <ProjectReference Include="..\CAMMS.Strategy.Application.DTO\CAMMS.Strategy.Application.DTO.csproj" />
     <ProjectReference Include="..\CAMMS.Strategy.Application.Interface\CAMMS.Strategy.Application.Interface.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Risk\" />
   </ItemGroup>
 
 </Project>
