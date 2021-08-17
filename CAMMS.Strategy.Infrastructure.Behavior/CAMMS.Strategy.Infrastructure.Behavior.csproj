@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <PackageReference Include="MediatR" Version="9.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="5.0.0" />
     <PackageReference Include="Polly" Version="7.2.2" />
     <PackageReference Include="Scrutor" Version="3.3.0" />
@@ -16,6 +15,7 @@
   <ItemGroup>
     <ProjectReference Include="..\CAMMS.Strategy.Application.Interface\CAMMS.Strategy.Application.Interface.csproj" />
     <ProjectReference Include="..\CAMMS.Strategy.Application\CAMMS.Strategy.Application.csproj" />
+    <ProjectReference Include="..\CAMMS.Strategy.Infrastructure.Identity\CAMMS.Strategy.Infrastructure.Identity.csproj" />
   </ItemGroup>
 
 </Project>
