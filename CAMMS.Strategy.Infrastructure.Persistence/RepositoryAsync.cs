@@ -121,7 +121,7 @@ namespace CAMMS.Strategy.Infrastructure.Persistence
 
                 Context.Database.OpenConnection();
                 using (var reader = await commend.ExecuteReaderAsync())
-                {
+                {                
                     return ConvertToObjectList<T>(reader);
                 }
             }

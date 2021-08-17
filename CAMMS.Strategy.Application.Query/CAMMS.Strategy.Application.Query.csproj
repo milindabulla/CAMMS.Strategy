@@ -16,4 +16,8 @@
     <ProjectReference Include="..\CAMMS.Strategy.Application.Interface\CAMMS.Strategy.Application.Interface.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Risk\" />
+  </ItemGroup>
+
 </Project>

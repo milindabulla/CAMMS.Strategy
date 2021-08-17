@@ -16,7 +16,7 @@ namespace CAMMS.Strategy.Application
     {
         public static void AddApplication(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddAutoMapper(typeof(ActionProfile));
+            services.AddAutoMapper(typeof(QuickUpdateStrategicRiskProfile));
             services.AddAutoMapper(typeof(UserProfile));
         }
 
