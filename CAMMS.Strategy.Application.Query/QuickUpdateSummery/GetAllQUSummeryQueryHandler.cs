@@ -35,9 +35,7 @@ namespace CAMMS.Strategy.Application.Query
             //List<UserQuickUpdateSectionDto> quUserSectionDtoList;
 
 
-            quSectionList = await unitOfWork.GetRepository<Domain.QuickUpdateSection>().GetAllAsync();       
-
-
+            quSectionList = await unitOfWork.GetRepository<Domain.QuickUpdateSection>().GetAllAsync();          
 
             foreach (var section in quSectionList)
             {
