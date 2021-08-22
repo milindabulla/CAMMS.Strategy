@@ -24,7 +24,12 @@ namespace CAMMS.Strategy.WebAPI.Controllers.v1
         public async Task<IActionResult> GetAll([FromQuery] GetAllQuickUpdateSummeryQuery query )
         {
             Log.Information("EndPoint - GET api/QUSummery");
-            return Ok(await _mediator.Send(query));
+            var responce = await _mediator.Send(query);
+            if (responce == null)
+            {
+                return NotFound();
+            }
+            return Ok(responce);
         }
     }
 }

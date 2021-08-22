@@ -32,68 +32,92 @@ namespace CAMMS.Strategy.Application.Query
 
             var actionList = new List<Domain.Action>();
             List<QuickUpdateSummeryDto> QUSummeryDtoList = new List<QuickUpdateSummeryDto>();
-            //List<UserQuickUpdateSectionDto> quUserSectionDtoList;
+           
 
-
-            quSectionList = await unitOfWork.GetRepository<Domain.QuickUpdateSection>().GetAllAsync();          
-
-            foreach (var section in quSectionList)
+            if ((request.UserId != null && request.AppCode != null) && request.AppCode == "SYCLE" || request.AppCode == "INTERPLAN" || request.AppCode == "IPM")
             {
-                if (section.UniqueName == "MYRISKS")
+                List<Domain.UserQuickUpdateSection> UserQuickUpdateSectionlist = await GetUserQuickUpdateSectionList(request.UserId, request.AppCode);
+                if (UserQuickUpdateSectionlist != null && UserQuickUpdateSectionlist.Count > 0)
                 {
-                   // SqlParameter[] parameters =
-                   //  {
-                   //    new SqlParameter("@STAFFID", "69990D31-7176-4A7D-926E-2D3C4AC45EE3"),
-                   //     new SqlParameter("@SearchCriteria", null),
-                   //       new SqlParameter("@PageIndex", 0),
-                   //         new SqlParameter("@PageSize", 50)
-                   // };                
-                   //var risks = await unitOfWork.GetRepository<Domain.QuickUpdateStrategicRisk>().ExecuteReaderAsync<Domain.QuickUpdateStrategicRisk>("[dbo].GetStrategicRisksForQuickUpdate", parameters);
-                          
+
                 }
                 else
                 {
-                    QUSummeryDtoList.Add(
-                          new QuickUpdateSummeryDto
-                          {
-                              QuickUpdateSectionCode = section.UniqueName,
-                              QuickUpdateSectionName = section.SectionName,                             
-                              Sort = section.Sort
-                          }
-                           );
+                    SqlParameter[] parameters =
+                             {
+                               new SqlParameter("@ApplicationCode", request.AppCode)
+                             };
+                    List<Domain.QuickUpdateSection> QUUpdateSectionlist = await unitOfWork.GetRepository<Domain.QuickUpdateSection>().ExecuteReaderAsync<Domain.QuickUpdateSection>("[dbo].GetQuickUpdateSectionByApplicationCode", parameters);
 
+                     QUUpdateSectionlist = QUUpdateSectionlist.GroupBy(x => x.QuickUpdateSectionID)
+                                  .Select(g => g.First())
+                                  .ToList();
+
+                    foreach (var section in QUUpdateSectionlist)
+                    {
+                        QUSummeryDtoList.Add(
+                           new QuickUpdateSummeryDto
+                           {
+                               QuickUpdateSectionCode = section.UniqueName,
+                               QuickUpdateSectionName = section.SectionName,
+                               Sort = section.Sort
+                           }
+                            );
+
+                    }
                 }
-
             }
+            else
+            {
+                quSectionList = await unitOfWork.GetRepository<Domain.QuickUpdateSection>().GetAllAsync();
 
-            //actionList = await unitOfWork.GetRepository<Domain.Action>().GetAllPagedAsync(request.PageNumber.Value, request.PageSize.Value);
-            //actionDtoList = mapper.Map<List<ActionDto>>(actionList);
+                foreach (var section in quSectionList)
+                {
+                    if (request.AppCode == "RISK" &&
+                        (section.UniqueName == "MYRISKS" || section.UniqueName == "MYRISKACTIONS") ||
+                        (section.UniqueName == "MYINCIDENTS" || section.UniqueName == "MYINCIDENTACTIONS") ||
+                         (section.UniqueName == "MYAUTHORITYDOCUMENT" || section.UniqueName == "MYRECOMMENDATIONS")
+                        )
+                    {
+                        QUSummeryDtoList.Add(
+                            new QuickUpdateSummeryDto
+                            {
+                                QuickUpdateSectionCode = section.UniqueName,
+                                QuickUpdateSectionName = section.SectionName,
+                                Sort = section.Sort
+                            }
+                             );
 
+                    }
 
-            return await Task.FromResult(QUSummeryDtoList.OrderByDescending(o => o.Sort).ToList());
+                    else if (request.UserId == null && request.AppCode == null)
+                    {
+                        QUSummeryDtoList.Add(
+                              new QuickUpdateSummeryDto
+                              {
+                                  QuickUpdateSectionCode = section.UniqueName,
+                                  QuickUpdateSectionName = section.SectionName,
+                                  Sort = section.Sort
+                              }
+                               );
+                    }
+                }
+            }      
+
+            return await Task.FromResult(QUSummeryDtoList.OrderBy(a=>a.Sort).ToList());
         }
 
-        private async Task<List<Domain.UserQuickUpdateSection>> GetUserQuickUpdateSectionList(Guid userId, string appCode)
-        {           
-
-            var quSectionList = new List<QuickUpdateSection>();
+        private async Task<List<Domain.UserQuickUpdateSection>> GetUserQuickUpdateSectionList(Guid? UserId, string AppCode)
+        { 
             var quUserSectionList = new List<UserQuickUpdateSection>();
 
             SqlParameter[] parameters =
-                {
-                       new SqlParameter("@UserID", userId),
-                        new SqlParameter("@AppCode", appCode)
+                                     {
+                       new SqlParameter("@UserID", UserId),
+                        new SqlParameter("@AppCode", AppCode)
 
                     };
             quUserSectionList = await unitOfWork.GetRepository<Domain.UserQuickUpdateSection>().ExecuteReaderAsync<Domain.UserQuickUpdateSection>("[dbo].GetAllUserQuickUpdateSectionByUserAppCode", parameters);
-
-            quSectionList = await unitOfWork.GetRepository<Domain.QuickUpdateSection>().GetAllAsync();
-
-            foreach (var item in quSectionList)
-            {
-
-            }
-
 
             return quUserSectionList;
         }

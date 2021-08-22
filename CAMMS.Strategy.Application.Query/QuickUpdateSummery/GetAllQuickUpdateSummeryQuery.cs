@@ -11,7 +11,7 @@ namespace CAMMS.Strategy.Application.Query
         {
            
         }
-        public Guid UserId { get; set; }
+        public Guid? UserId { get; set; }
         public string AppCode { get; set; }
       
     }
