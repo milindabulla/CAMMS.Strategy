@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using CAMMS.Strategy.Application.ObjectMapping;
 
 using MediatR;
+using CAMMS.Strategy.Application.ObjectMapping.Common;
 
 namespace CAMMS.Strategy.Application
 {
@@ -18,6 +19,8 @@ namespace CAMMS.Strategy.Application
         {
             services.AddAutoMapper(typeof(QuickUpdateStrategicRiskProfile));
             services.AddAutoMapper(typeof(UserProfile));
+            services.AddAutoMapper(typeof(ParameterProfile));
+            services.AddAutoMapper(typeof(SettingProfile));
         }
 
         public static void AddApplicationValidationBehaviour(this IServiceCollection services, IConfiguration configuration)

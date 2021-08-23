@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace CAMMS.Strategy.Application.DTO.Common
 {
-    public class SettingDto
+    public class ParameterDto
     {
-        public string Name { get; set; }
-        public string Value { get; set; }
+        public string Description;
+        public string Data;
     }
 }
