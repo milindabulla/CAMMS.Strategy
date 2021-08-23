@@ -36,22 +36,29 @@ namespace CAMMS.Strategy.Application.Query
 
             if ((request.UserId != null && request.AppCode != null) && request.AppCode == "SYCLE" || request.AppCode == "INTERPLAN" || request.AppCode == "IPM")
             {
+                List<Domain.QuickUpdateSection> QUUpdateSectionlist = await GetUserQuickUpdateSectionByAppCode(request.AppCode);
                 List<Domain.UserQuickUpdateSection> UserQuickUpdateSectionlist = await GetUserQuickUpdateSectionList(request.UserId, request.AppCode);
                 if (UserQuickUpdateSectionlist != null && UserQuickUpdateSectionlist.Count > 0)
                 {
-
+                    foreach (var section in QUUpdateSectionlist)
+                    {
+                        if (UserQuickUpdateSectionlist.Exists(u => u.QuickUpdateSectionID == section.QuickUpdateSectionID && u.IsVisible))
+                        {
+                            QUSummeryDtoList.Add(
+                          new QuickUpdateSummeryDto
+                          {
+                              QuickUpdateSectionCode = section.UniqueName,
+                              QuickUpdateSectionName = section.SectionName,
+                              Sort = section.Sort
+                          }
+                           );
+                        }
+                    }                 
                 }
                 else
-                {
-                    SqlParameter[] parameters =
-                             {
-                               new SqlParameter("@ApplicationCode", request.AppCode)
-                             };
-                    List<Domain.QuickUpdateSection> QUUpdateSectionlist = await unitOfWork.GetRepository<Domain.QuickUpdateSection>().ExecuteReaderAsync<Domain.QuickUpdateSection>("[dbo].GetQuickUpdateSectionByApplicationCode", parameters);
+                {        
 
-                     QUUpdateSectionlist = QUUpdateSectionlist.GroupBy(x => x.QuickUpdateSectionID)
-                                  .Select(g => g.First())
-                                  .ToList();
+                    QUUpdateSectionlist = QUUpdateSectionlist.GroupBy(x => x.QuickUpdateSectionID).Select(g => g.First()).ToList();
 
                     foreach (var section in QUUpdateSectionlist)
                     {
@@ -120,6 +127,18 @@ namespace CAMMS.Strategy.Application.Query
             quUserSectionList = await unitOfWork.GetRepository<Domain.UserQuickUpdateSection>().ExecuteReaderAsync<Domain.UserQuickUpdateSection>("[dbo].GetAllUserQuickUpdateSectionByUserAppCode", parameters);
 
             return quUserSectionList;
+        }
+
+        private async Task<List<Domain.QuickUpdateSection>> GetUserQuickUpdateSectionByAppCode(string AppCode)
+        {          
+
+            SqlParameter[] parameters =
+                            {
+                               new SqlParameter("@ApplicationCode", AppCode)
+                             };
+            List<Domain.QuickUpdateSection> QUUpdateSectionlist = await unitOfWork.GetRepository<Domain.QuickUpdateSection>().ExecuteReaderAsync<Domain.QuickUpdateSection>("[dbo].GetQuickUpdateSectionByApplicationCode", parameters);
+
+            return QUUpdateSectionlist;
         }
     }
 }
