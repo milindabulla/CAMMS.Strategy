@@ -11,5 +11,6 @@ namespace CAMMS.Strategy.Application
         public string Uri { get; set; }
         public int SlidingExpirationInMin { get; set; }
         public int AbsoluteExpirationInMin { get; set; }
+        public bool BypassCache { get; set; }
     }
 }

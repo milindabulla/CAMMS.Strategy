@@ -23,6 +23,7 @@ namespace CAMMS.Strategy.Infrastructure.Behavior
         public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
         {
             TResponse response;
+            if (Settings.BypassCache) return await next();
             var cachedResponse = await Cache.GetAsync((string)request.CacheKey, cancellationToken);
             if (cachedResponse != null)
             {

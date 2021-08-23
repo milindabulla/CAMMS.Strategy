@@ -33,10 +33,8 @@ namespace CAMMS.Strategy.WebAPI
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {
-
+        {           
             services.AddControllers();
-
             services.AddHealthChecks()
                 .AddSqlServer(Configuration.GetConnectionString("DefaultConnectionString"), name: "MS SQL Server Instance")
                 .AddDiskStorageHealthCheck(s => s.AddDrive(Configuration["HealthConfiguration:DiskStorageDrive"], long.Parse(Configuration["HealthConfiguration:DiskStorageLimit"])), name: "Disk Storage")
@@ -70,6 +68,8 @@ namespace CAMMS.Strategy.WebAPI
 
             services.AddMediatR(AppDomain.CurrentDomain.Load("CAMMS.Strategy.Application.Query"));
             services.AddMediatR(AppDomain.CurrentDomain.Load("CAMMS.Strategy.Application.Command"));
+
+            services.Configure<CacheSettings>(Configuration.GetSection("CacheSettings"));
 
             services.AddApiVersioning(o =>
             {

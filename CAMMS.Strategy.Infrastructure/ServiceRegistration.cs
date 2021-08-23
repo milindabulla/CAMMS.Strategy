@@ -17,6 +17,10 @@ namespace CAMMS.Strategy.Infrastructure
             services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
             services.AddSingleton(typeof(JWTProvider));
             services.AddSingleton(typeof(RequestAuthorizer));
+            services.AddStackExchangeRedisCache(options =>
+            {
+                options.Configuration = configuration["CacheSettings:Uri"];              
+            });
         }
 
         public static void AddInfrastructureLoggingBehaviour(this IServiceCollection services, IConfiguration configuration)
