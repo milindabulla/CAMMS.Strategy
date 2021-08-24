@@ -33,7 +33,7 @@ namespace CAMMS.Strategy.WebAPI.Controllers.v1
         [HttpGet("GetAllParameter")]
         public async Task<IActionResult> GetAllParameter([FromQuery] GetAllParameterQuery query)
         {
-            Log.Information("EndPoint - GET api/etAllParameter");
+            Log.Information("EndPoint - GET api/GetAllParameter");
             return Ok(await _mediator.Send(query));
         }
     }

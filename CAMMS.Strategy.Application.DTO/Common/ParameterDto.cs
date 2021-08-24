@@ -8,7 +8,7 @@ namespace CAMMS.Strategy.Application.DTO.Common
 {
     public class ParameterDto
     {
-        public string Description;
-        public string Data;
+        public string Description { get; set; }
+        public string Data { get; set; }
     }
 }

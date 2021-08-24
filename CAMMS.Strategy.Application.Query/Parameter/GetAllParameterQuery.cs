@@ -9,9 +9,8 @@ using System.Threading.Tasks;
 
 namespace CAMMS.Strategy.Application.Query.Parameter
 {
-    public class GetAllParameterQuery : IRequest<List<ParameterDto>>
-
+    public class GetAllParameterQuery : IRequest<List<ParameterDto>>,ICacheableQuery
     {
-        
+        public string CacheKey => $"GetAllParameterQuery";
     }
 }
