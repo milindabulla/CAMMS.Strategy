@@ -42,8 +42,9 @@ namespace CAMMS.Strategy.WebAPI
                 .AddPrivateMemoryHealthCheck(long.Parse(Configuration["HealthConfiguration:PrivateMemoryLimit"]), name: "Private Memory")
                 .AddProcessHealthCheck("System", p => p.Length > 0, name: "System Process")
                 .AddVirtualMemorySizeHealthCheck(long.Parse(Configuration["HealthConfiguration:VirtualMemoryLimit"]), name: "Virtual Memory")
+                .AddRedis(Configuration["CacheSettings:Uri"], "Redis Cache URL")
                 .AddUrlGroup(new Uri(Configuration["ElasticConfiguration:Uri"]), "Downstream - Elastic Search URL")
-                .AddUrlGroup(new Uri(Configuration["KibanaConfiguration:Uri"]), "Downstream - Kibana URL");
+                .AddUrlGroup(new Uri(Configuration["KibanaConfiguration:Uri"]), "Downstream - Kibana URL");  
 
             services.AddHealthChecksUI(s =>
             {
