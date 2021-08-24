@@ -9,6 +9,7 @@ namespace CAMMS.Strategy.Application
     public class CacheSettings
     {
         public string Uri { get; set; }
+        public string InstanceName { get; set; }
         public int SlidingExpirationInMin { get; set; }
         public int AbsoluteExpirationInMin { get; set; }
         public bool BypassCache { get; set; }

@@ -19,7 +19,8 @@ namespace CAMMS.Strategy.Infrastructure
             services.AddSingleton(typeof(RequestAuthorizer));
             services.AddStackExchangeRedisCache(options =>
             {
-                options.Configuration = configuration["CacheSettings:Uri"];              
+                options.Configuration = configuration["CacheSettings:Uri"];
+                options.InstanceName = configuration["CacheSettings:InstanceName"];
             });
         }
 
