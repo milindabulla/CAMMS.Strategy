@@ -27,8 +27,28 @@ namespace CAMMS.Strategy.Application.Query.Parameter
         public async Task<List<ParameterDto>> Handle(GetAllParameterQuery request, CancellationToken cancellationToken)
         {
             var parameterList = await UnitOfWork.GetRepository<Domain.Common.Parameters>().GetAllAsync();
-            List<ParameterDto> parameterDtoList = Mapper.Map<List<ParameterDto>>(parameterList);
+            List<ParameterDto> parameterDtoList = new List<ParameterDto>();
+            foreach (var param in parameterList) {
+                ParameterDto item = new ParameterDto { Description = param.Description, Data = GetParameterValue(param.Data) };
+                parameterDtoList.Add(item);
+            }
             return await Task.FromResult(parameterDtoList);
+        }
+
+        public static string GetParameterValue(byte[] value)
+        {
+            
+                if (value != null)
+                {
+                    MemoryStream ms = new MemoryStream(value);
+                    BinaryFormatter bf = new BinaryFormatter();
+                    return bf.Deserialize(ms).ToString();
+                }
+                else
+                {
+                    return default(string);
+                }
+           
         }
 
     }
