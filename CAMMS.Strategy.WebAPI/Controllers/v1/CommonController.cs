@@ -1,4 +1,5 @@
-﻿using CAMMS.Strategy.Application.Query.Setting;
+﻿using CAMMS.Strategy.Application.Query.Parameter;
+using CAMMS.Strategy.Application.Query.Setting;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -22,10 +23,17 @@ namespace CAMMS.Strategy.WebAPI.Controllers.v1
             this._mediator = mediator;
         }
 
-        [HttpGet]
+        [HttpGet("GetSettingByAppCode")]
         public async Task<IActionResult> GetSettingByAppCode([FromQuery] GetSettingByAppCodeQuery query)
         {
             Log.Information("EndPoint - GET api/GetSettingByAppCode");
+            return Ok(await _mediator.Send(query));
+        }
+
+        [HttpGet("GetAllParameter")]
+        public async Task<IActionResult> GetAllParameter([FromQuery] GetAllParameterQuery query)
+        {
+            Log.Information("EndPoint - GET api/GetAllParameter");
             return Ok(await _mediator.Send(query));
         }
     }
