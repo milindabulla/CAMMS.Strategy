@@ -48,3 +48,5 @@ typings
 bin
 obj
 CAMMS.Strategy.Database/CAMMS.Strategy.Database.dbmdl
+CAMMS.Strategy.Database/CAMMS.Strategy.Database.jfm
+*.jfm
