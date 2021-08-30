@@ -11,6 +11,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Base\QueryBase.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.1.1" />
     <PackageReference Include="MediatR" Version="9.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
@@ -21,6 +25,10 @@
     <ProjectReference Include="..\CAMMS.Core\CAMMS.Domain.csproj" />
     <ProjectReference Include="..\CAMMS.Strategy.Application.DTO\CAMMS.Strategy.Application.DTO.csproj" />
     <ProjectReference Include="..\CAMMS.Strategy.Application.Interface\CAMMS.Strategy.Application.Interface.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Base\" />
   </ItemGroup>
 
 </Project>

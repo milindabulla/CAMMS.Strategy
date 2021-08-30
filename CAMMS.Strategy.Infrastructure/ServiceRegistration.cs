@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using CAMMS.Strategy.Infrastructure.Identity;
+using CAMMS.Strategy.Application.DTO;
 
 namespace CAMMS.Strategy.Infrastructure
 {
@@ -22,6 +23,8 @@ namespace CAMMS.Strategy.Infrastructure
                 options.Configuration = configuration["CacheSettings:Uri"];
                 options.InstanceName = configuration["CacheSettings:InstanceName"];
             });
+            services.AddSingleton(typeof(IAuthorizer<AuthorizationResult>),typeof(RequestAuthorizer<AuthorizationResult>));
+            services.AddScoped(typeof(IAuthenticator), typeof(JwtAuthenticator));
         }
 
         public static void AddInfrastructureLoggingBehaviour(this IServiceCollection services, IConfiguration configuration)

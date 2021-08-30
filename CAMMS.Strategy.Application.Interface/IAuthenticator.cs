@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace CAMMS.Strategy.Application.Interface
 {
-    public interface IAuthorizedRequest
+    public interface IAuthenticator
     {
+        Task<string> AuthenticateAsync(string database, string userName, string password);
     }
 }

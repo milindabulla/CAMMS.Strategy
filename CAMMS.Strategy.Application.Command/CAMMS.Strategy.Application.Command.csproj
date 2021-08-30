@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Base\CommandBase.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.1.1" />
     <PackageReference Include="FluentValidation" Version="10.3.0" />
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="10.3.0" />
@@ -16,7 +20,10 @@
     <ProjectReference Include="..\CAMMS.Core\CAMMS.Domain.csproj" />
     <ProjectReference Include="..\CAMMS.Strategy.Application.DTO\CAMMS.Strategy.Application.DTO.csproj" />
     <ProjectReference Include="..\CAMMS.Strategy.Application.Interface\CAMMS.Strategy.Application.Interface.csproj" />
-    <ProjectReference Include="..\CAMMS.Strategy.Infrastructure.Identity\CAMMS.Strategy.Infrastructure.Identity.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Base\" />
   </ItemGroup>
 
 </Project>

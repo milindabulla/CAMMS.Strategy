@@ -5,7 +5,7 @@ using System;
 
 namespace CAMMS.Strategy.Application.Command
 {
-    public class CreateActionCommand : IRequest<int>, IAuthorizedRequest
+    public class CreateActionCommand : IRequest<int>,IAuthorizedRequest
     {
         public int Id { get; set; }
         public string Name { get; set; }

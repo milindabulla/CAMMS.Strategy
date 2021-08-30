@@ -1,12 +1,13 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CAMMS.Strategy.Infrastructure.Identity
+namespace CAMMS.Strategy.Application.DTO
 {
-    public class AuthorizationResult
+    public class AuthorizationResult 
     {
         public AuthorizationResult() { }
         private AuthorizationResult(bool isAuthorized, string failureMessage)

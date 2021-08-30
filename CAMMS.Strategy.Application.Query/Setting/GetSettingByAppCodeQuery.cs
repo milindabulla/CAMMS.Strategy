@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CAMMS.Strategy.Application.Query.Setting
 {
-    public class GetSettingByAppCodeQuery : IRequest<List<SettingDto>>, ICacheableQuery
+    public class GetSettingByAppCodeQuery : IRequest<List<SettingDto>>, ICacheableQuery,IAuthorizedRequest
     {
         public GetSettingByAppCodeQuery()
         {

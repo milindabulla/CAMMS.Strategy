@@ -1,4 +1,5 @@
 ﻿using CAMMS.Strategy.Application;
+using CAMMS.Strategy.Application.DTO;
 using CAMMS.Strategy.Application.Interface;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
@@ -13,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace CAMMS.Strategy.Infrastructure.Identity
 {
-    public class RequestAuthorizer
+    public class RequestAuthorizer<T> : IAuthorizer<T> where T:class
     {
         private readonly IConfiguration configuration;
         private readonly IOptions<AppSettings> appSettings;
@@ -26,13 +27,14 @@ namespace CAMMS.Strategy.Infrastructure.Identity
             this.httpContextAccessor = httpContextAccessor;
         }
 
-        public async Task<AuthorizationResult> AuthorizeAsync(IAuthorizedRequest authorizedRequest)
+        public async Task<T> AuthorizeAsync(IAuthorizedRequest authorizedRequest)
         {
             
             AuthorizationResult result = new AuthorizationResult();
+            string authorizedRequestToken = this.httpContextAccessor.HttpContext.Request.Headers["Authorization"];
             try
             {
-                string token = authorizedRequest.Token.Split(" ").Last();
+                string token = authorizedRequestToken.Split(" ").Last();
                 var tokenHandler = new JwtSecurityTokenHandler();
                 var key = Encoding.ASCII.GetBytes(appSettings.Value.Secret);
                 tokenHandler.ValidateToken(token, new TokenValidationParameters
@@ -59,7 +61,7 @@ namespace CAMMS.Strategy.Infrastructure.Identity
             {
                 result = AuthorizationResult.Fail("Authorization Failed");
             }
-            return result;
+            return result as T;
         }
     }
 }

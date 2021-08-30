@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace CAMMS.Strategy.Application.Query
 {
-    public class GetActionByIdQuery : IRequest<ActionDto>, IAuthorizedRequest
+    public class GetActionByIdQuery :  IRequest<ActionDto>,IAuthorizedRequest
     {
         public GetActionByIdQuery()
         {
@@ -15,7 +15,5 @@ namespace CAMMS.Strategy.Application.Query
         }
 
         public Guid Id { get; set; }
-        [FromHeader(Name = "Authorization")]
-        public string Token { get; set; }
     }
 }

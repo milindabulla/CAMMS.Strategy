@@ -1,4 +1,5 @@
-﻿using CAMMS.Strategy.Application.Interface;
+﻿using CAMMS.Strategy.Application.DTO;
+using CAMMS.Strategy.Application.Interface;
 using CAMMS.Strategy.Infrastructure.Identity;
 using MediatR;
 using Microsoft.Extensions.Configuration;
@@ -10,9 +11,9 @@ namespace CAMMS.Strategy.Infrastructure.Behavior
     public class RequestAuthorizationBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : IAuthorizedRequest
     {
         private readonly IConfiguration configuration;
-        private readonly RequestAuthorizer authorizer;
+        private readonly IAuthorizer<AuthorizationResult> authorizer;
 
-        public RequestAuthorizationBehavior(IConfiguration configuration, RequestAuthorizer authorizer)
+        public RequestAuthorizationBehavior(IConfiguration configuration, IAuthorizer<AuthorizationResult> authorizer)
         {
             this.configuration = configuration;
             this.authorizer = authorizer;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CAMMS.Strategy.Application.Interface
 {
-    public interface IAuthorizedRequest
-    {
+    public interface IAuthorizer<T> where T: class {
+        Task<T> AuthorizeAsync(IAuthorizedRequest authorizedRequest);
     }
 }
