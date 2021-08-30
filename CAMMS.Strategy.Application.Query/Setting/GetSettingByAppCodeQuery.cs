@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CAMMS.Strategy.Application.Query.Setting
+namespace CAMMS.Strategy.Application.Query
 {
     public class GetSettingByAppCodeQuery : IRequest<List<SettingDto>>, ICacheableQuery,IAuthorizedRequest
     {

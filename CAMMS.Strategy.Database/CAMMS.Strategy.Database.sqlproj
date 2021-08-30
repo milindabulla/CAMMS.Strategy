@@ -57,5 +57,12 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
+    <Folder Include="CAMMSStrategy" />
+    <Folder Include="CAMMSStrategy\StoredProcedures" />
+    <Folder Include="CAMMSStrategy\StoredProcedures\Read" />
+    <Folder Include="CAMMSStrategy\StoredProcedures\Write" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="CAMMSStrategy\StoredProcedures\Read\UserLoginForAPI.sql" />
   </ItemGroup>
 </Project>

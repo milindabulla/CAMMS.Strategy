@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CAMMS.Strategy.Application.Query.Parameter
+namespace CAMMS.Strategy.Application.Query
 {
-    public class GetAllParameterQuery : IRequest<List<ParameterDto>>,ICacheableQuery
+    public class GetAllParameterQuery : IRequest<List<ParameterDto>>,ICacheableQuery,IAuthorizedRequest
     {
         public string CacheKey => $"GetAllParameterQuery";
     }

@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace CAMMS.Strategy.Application.Query.Parameter
+namespace CAMMS.Strategy.Application.Query
 {
     public class GetAllParameterHandler : IRequestHandler<GetAllParameterQuery, List<ParameterDto>>
     {

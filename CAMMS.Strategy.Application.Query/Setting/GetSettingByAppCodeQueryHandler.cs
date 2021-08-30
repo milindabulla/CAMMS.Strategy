@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace CAMMS.Strategy.Application.Query.Setting
+namespace CAMMS.Strategy.Application.Query
 {
     public class GetSettingByAppCodeQueryHandler : IRequestHandler<GetSettingByAppCodeQuery, List<SettingDto>>
     {
