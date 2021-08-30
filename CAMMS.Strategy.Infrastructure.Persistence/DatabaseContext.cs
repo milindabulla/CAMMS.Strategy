@@ -158,5 +158,6 @@ namespace CAMMS.Strategy.Infrastructure.Persistence
         //public DbSet<Domain.QuickUpdateStrategicRisk> QuickUpdateStrategicRisk { get; set; }
         public DbSet<Domain.RiskFieldSettings> RiskFieldSettings { get; set; }
         public DbSet<AuditLog> AuditLog { get; set; }
+        public DbSet<Domain.Common.Setting> Setting { get; set; }
     }
 }

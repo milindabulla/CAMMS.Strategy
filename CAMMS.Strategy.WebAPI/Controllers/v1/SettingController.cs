@@ -26,7 +26,7 @@ namespace CAMMS.Strategy.WebAPI.Controllers.v1
         public async Task<IActionResult> GetAll()
         {
             Log.Information("EndPoint - GET api/Setting");
-            return Ok(await _mediator.Send(new GetSettingByAppCodeQuery()));
+            return Ok(await _mediator.Send(new GetAllSettingQuery()));
         }
 
         [HttpGet("{appCode}")]
