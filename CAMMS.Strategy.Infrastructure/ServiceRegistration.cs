@@ -16,8 +16,6 @@ namespace CAMMS.Strategy.Infrastructure
         {
             services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnectionString")));
             services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
-            services.AddSingleton(typeof(JWTProvider));
-            services.AddSingleton(typeof(RequestAuthorizer));
             services.AddStackExchangeRedisCache(options =>
             {
                 options.Configuration = configuration["CacheSettings:Uri"];
