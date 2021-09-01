@@ -45,6 +45,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CAMMS.Strategy.Infrastructu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CAMMS.Strategy.Infrastructure.Persistence", "CAMMS.Strategy.Infrastructure.Persistence\CAMMS.Strategy.Infrastructure.Persistence.csproj", "{0E0E0238-7512-4563-BB60-6C0C89741F25}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CAMMS.Strategy.Application.Common", "CAMMS.Strategy.Application.Common\CAMMS.Strategy.Application.Common.csproj", "{0CCD97D6-EFCD-42FF-9B97-D0D4D019D985}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -109,6 +111,10 @@ Global
 		{0E0E0238-7512-4563-BB60-6C0C89741F25}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E0E0238-7512-4563-BB60-6C0C89741F25}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E0E0238-7512-4563-BB60-6C0C89741F25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CCD97D6-EFCD-42FF-9B97-D0D4D019D985}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CCD97D6-EFCD-42FF-9B97-D0D4D019D985}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CCD97D6-EFCD-42FF-9B97-D0D4D019D985}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CCD97D6-EFCD-42FF-9B97-D0D4D019D985}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -132,6 +138,7 @@ Global
 		{D4F03CA5-FEAC-4FE4-9EC1-2922EA265DB3} = {67BD57F8-2C66-4BF4-AA05-7515118CDCB8}
 		{3C454D95-0FBC-49F9-9689-711A1A370734} = {67BD57F8-2C66-4BF4-AA05-7515118CDCB8}
 		{0E0E0238-7512-4563-BB60-6C0C89741F25} = {67BD57F8-2C66-4BF4-AA05-7515118CDCB8}
+		{0CCD97D6-EFCD-42FF-9B97-D0D4D019D985} = {FC6ADBC0-7B5F-40EA-9641-3F16CC533ECC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DC1C7ABD-9E2F-4FB6-91B3-5D62CDD20EEA}

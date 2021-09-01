@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CAMMS.Core\CAMMS.Domain.csproj" />
+    <ProjectReference Include="..\CAMMS.Strategy.Application.Common\CAMMS.Strategy.Application.Common.csproj" />
     <ProjectReference Include="..\CAMMS.Strategy.Application.DTO\CAMMS.Strategy.Application.DTO.csproj" />
     <ProjectReference Include="..\CAMMS.Strategy.Application.Interface\CAMMS.Strategy.Application.Interface.csproj" />
   </ItemGroup>

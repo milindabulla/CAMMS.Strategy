@@ -1,5 +1,6 @@
 ﻿using CAMMS.Strategy.Application.DTO;
 using CAMMS.Strategy.Application.Interface;
+using CAMMS.Strategy.Application.Common;
 using CAMMS.Domain;
 using MediatR;
 using System;
@@ -34,7 +35,7 @@ namespace CAMMS.Strategy.Application.Query
             List<QuickUpdateSummeryDto> QUSummeryDtoList = new List<QuickUpdateSummeryDto>();
            
 
-            if ((request.UserId != null && request.AppCode != null) && request.AppCode == "SYCLE" || request.AppCode == "INTERPLAN" || request.AppCode == "IPM")
+            if ((request.UserId != null && request.AppCode != null) && request.AppCode == Common.Enums.ApplicationCodes.SYCLE.ToString() || request.AppCode == Common.Enums.ApplicationCodes.INTERPLAN.ToString() || request.AppCode == Common.Enums.ApplicationCodes.IPM.ToString())
             {
                 List<Domain.QuickUpdateSection> QUUpdateSectionlist = await GetUserQuickUpdateSectionByAppCode(request.AppCode);
                 List<Domain.UserQuickUpdateSection> UserQuickUpdateSectionlist = await GetUserQuickUpdateSectionList(request.UserId, request.AppCode);
@@ -80,7 +81,7 @@ namespace CAMMS.Strategy.Application.Query
 
                 foreach (var section in quSectionList)
                 {
-                    if (request.AppCode == "RISK" &&
+                    if (request.AppCode == Common.Enums.ApplicationCodes.IRM.ToString() &&
                         (section.UniqueName == "MYRISKS" || section.UniqueName == "MYRISKACTIONS") ||
                         (section.UniqueName == "MYINCIDENTS" || section.UniqueName == "MYINCIDENTACTIONS") ||
                          (section.UniqueName == "MYAUTHORITYDOCUMENT" || section.UniqueName == "MYRECOMMENDATIONS")
