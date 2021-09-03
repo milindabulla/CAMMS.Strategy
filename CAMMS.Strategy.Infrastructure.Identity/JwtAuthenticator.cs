@@ -18,14 +18,12 @@ namespace CAMMS.Strategy.Infrastructure.Identity
     public class JwtAuthenticator : IAuthenticator
     {
         private readonly AppSettings appSettings;
-        private readonly IOptions<AppSettings> appSettings1;
         private readonly IUnitOfWork unitOfWork;
         private readonly IConfiguration configuration;
 
         public JwtAuthenticator(IOptions<AppSettings> appSettings, IUnitOfWork unitOfWork, IConfiguration configuration)
         {
             this.appSettings = appSettings.Value;
-            appSettings1 = appSettings;
             this.unitOfWork = unitOfWork;
             this.configuration = configuration;
         }

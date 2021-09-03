@@ -21,7 +21,7 @@ namespace CAMMS.Strategy.WebAPI.Controllers.v1
         }
 
         [HttpPost("authenticate")]
-        public async Task<IActionResult> Create(AuthenticateUserCommand command)
+        public async Task<IActionResult> Login(AuthenticateUserCommand command)
         {
             Log.Information("EndPoint - POST api/User/Authenticate");
             return Ok(await mediator.Send(command));
