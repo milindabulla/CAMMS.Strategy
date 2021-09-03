@@ -159,5 +159,6 @@ namespace CAMMS.Strategy.Infrastructure.Persistence
         public DbSet<Domain.RiskFieldSettings> RiskFieldSettings { get; set; }
         public DbSet<AuditLog> AuditLog { get; set; }
         public DbSet<Domain.Common.Setting> Setting { get; set; }
+        public DbSet<Domain.LABELREPLACEMENT> LABELREPLACEMENT { get; set; }
     }
 }
