@@ -1,5 +1,6 @@
 ﻿using CAMMS.Strategy.Application.Interface;
 using CAMMS.Strategy.Infrastructure.Behavior;
+using CAMMS.Strategy.Infrastructure.Cache;
 using CAMMS.Strategy.Infrastructure.Persistence;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -16,6 +17,7 @@ namespace CAMMS.Strategy.Infrastructure
         {
             services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnectionString")));
             services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
+            services.AddScoped(typeof(ICacheData), typeof(CacheData));
             services.AddStackExchangeRedisCache(options =>
             {
                 options.Configuration = configuration["CacheSettings:Uri"];

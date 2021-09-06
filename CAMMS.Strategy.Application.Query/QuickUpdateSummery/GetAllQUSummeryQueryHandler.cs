@@ -19,11 +19,13 @@ namespace CAMMS.Strategy.Application.Query
     {
         private readonly IUnitOfWork unitOfWork;
         private readonly IMapper mapper;
+        private readonly ICacheData cacheData;
 
-        public GetAllQUSummeryQueryHandler(IUnitOfWork unitOfWork, IMapper mapper)
+        public GetAllQUSummeryQueryHandler(IUnitOfWork unitOfWork, IMapper mapper, ICacheData cacheData)
         {
             this.unitOfWork = unitOfWork;
             this.mapper = mapper;
+            this.cacheData = cacheData;
         }
         public async Task<List<QuickUpdateSummeryDto>> Handle(GetAllQuickUpdateSummeryQuery request, CancellationToken cancellationToken)
         {
@@ -110,7 +112,9 @@ namespace CAMMS.Strategy.Application.Query
                                );
                     }
                 }
-            }      
+            }
+
+           // List<Domain.LABELREPLACEMENT> ll= await cacheData.GetCacheData<Domain.LABELREPLACEMENT>("GetAllLabelReplacementQuery");
 
             return await Task.FromResult(QUSummeryDtoList.OrderBy(a=>a.Sort).ToList());
         }
